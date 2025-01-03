@@ -75,9 +75,33 @@ header {
     border-radius: 8px;
 }
 
+.project-card .first-line{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.first-line h3 {
+    margin: 10px 0 0 0;
+    font-size: 1.5rem;
+}
+
+.first-line h4 {
+    margin: 10px 0 0 0;
+    color: #6c757d;
+}
+
+.project-card .start-date {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-top: 10px;
+}
+
 .project-card img {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -100,19 +124,14 @@ header {
 
 /* Navbar styles */
 .navbar {
+    display: flex;
+    justify-content: space-between;
     background-color: #2c3e50;
     padding: 1rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Container for alignment */
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
 /* Left side of the navbar */
 .navbar-left {
@@ -161,43 +180,6 @@ header {
 .navbar-right .nav-link:hover {
     color: #f39c12;
 }
-
-/* Hamburger button styles */
-.navbar-toggler {
-    border: none;
-    background-color: transparent;
-    outline: none;
-}
-
-.navbar-toggler-icon {
-    background-color: white;
-    width: 30px;
-    height: 3px;
-    display: block;
-    position: relative;
-}
-
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    transition: transform 0.3s ease;
-}
-
-.navbar-toggler-icon::before {
-    top: -8px;
-}
-
-.navbar-toggler-icon::after {
-    top: 8px;
-}
-
-
-
-
 
 /* Footer Styles */
 .footer {

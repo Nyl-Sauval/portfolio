@@ -9,7 +9,7 @@ class ProjectController
     public function index()
     {
         return view('projects.index', [
-            'projects' => Project::all(),
+            'projects' => Project::where('visibility', 1)->get(),
         ]);
     }
     public function show($id)

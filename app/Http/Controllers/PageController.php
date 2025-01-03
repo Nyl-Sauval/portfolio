@@ -9,7 +9,7 @@ class PageController
     public function index()
     {
         return view('welcome', [
-            'projects' => Project::all(),
+            'projects' => Project::where('visibility', 1)->get(),
         ]);
     }
 }

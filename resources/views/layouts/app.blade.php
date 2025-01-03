@@ -34,17 +34,5 @@
 </div>
 
 @include('layouts.footer')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Sélectionner le bouton hamburger et la section du menu à afficher
-        const toggler = document.querySelector('.navbar-toggler');
-        const navbar = document.querySelector('.collapse');
-
-        // Ajouter un gestionnaire d'événements pour le clic
-        toggler.addEventListener('click', function() {
-            navbar.classList.toggle('show');  // Ajoute/retire la classe 'show' pour afficher/cacher le menu
-        });
-    });
-</script>
 </body>
 </html>

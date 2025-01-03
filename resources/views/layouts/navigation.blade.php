@@ -23,11 +23,6 @@
                 <a class="nav-link" href="{{ route('register') }}">S'inscrire</a>
             @endif
         </div>
-
-        <!-- Toggler for small screens -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </div>
 </nav>
 
