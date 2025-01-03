@@ -14,18 +14,18 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('summary');
-            $table->text('description');
+            $table->string('summary')->nullable();
+            $table->text('description')->nullable();
             $table->json('images')->nullable();
-            $table->integer('complexity')->default(1);
+            $table->integer('complexity')->default(1)->nullable();
             $table->json('technologies')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->string('project_link')->nullable();
-            $table->string('status')->default('in_progress');
-            $table->string('type')->default('web');
+            $table->string('status')->default('in_progress')->nullable();
+            $table->string('type')->nullable();
             $table->integer('estimated_duration')->nullable();
-            $table->boolean('visibility')->default(true);
+            $table->boolean('visibility')->default(false)->nullable();
             $table->timestamps();
         });
 

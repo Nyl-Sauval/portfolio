@@ -2,12 +2,14 @@
     <div class="container">
         <!-- Left side (Projets, À propos, Contact) -->
         <div class="navbar-left">
-            <a class="navbar-brand" href="{{route('welcome')}}">Mon Portfolio</a>
             <div class="navbar-links">
                 <a class="nav-link" href="{{route('welcome')}}">Projets</a>
-                <a class="nav-link" href="#about">À propos</a>
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="{{route('contact')}}">Contact</a>
             </div>
+        </div>
+
+        <div class="navbar-center">
+            <a href="{{ route('welcome') }}"><img class="logo" src="{{asset('storage/images/logo.png')}}" alt="logo"/></a>
         </div>
 
         <!-- Right side (Login, Register) -->

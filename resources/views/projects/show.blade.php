@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="project-details card">
         <h1 class="title">{{ $project->title }}</h1>
-        <p class="updated-at">Mis à jour le : {{ $project->updated_at->format('d/m/Y') }}</p>
+        <p class="updated-at">Mis à jour le : {{ $project->updated_at }}</p>
 
         <div class="project-body">
             <!-- Main Image -->
-            @if(count($project->images) > 0)
+            @if($project->images)
                 <div class="main-image">
                     <img src="{{ asset('storage/projects/' . $project->images[0]) }}" alt="{{ $project->images[0] }}" class="img-fluid">
                 </div>
@@ -35,9 +35,9 @@
                         @endfor
                     </div>
                 </li>
-                <li><strong>Projet commencé le :</strong> {{ $project->start_date->format('d/m/Y') }}</li>
+                <li><strong>Projet commencé le :</strong> {{ $project->start_date }}</li>
                 @if($project->end_date)
-                    <li><strong>Projet terminé le :</strong> {{ $project->end_date->format('d/m/Y') }}</li>
+                    <li><strong>Projet terminé le :</strong> {{ $project->end_date }}</li>
                 @endif
                 <li><strong>Durée estimée :</strong> {{ $project->estimated_duration }} heures</li>
                 <li><strong>Categorie :</strong> {{ $project->type }}</li>
@@ -46,7 +46,7 @@
             </ul>
         </div>
 
-        @if(count($project->images) > 1)
+        @if($project->images)
             <div class="other-images">
                 <h3>Autres images</h3>
                 <div class="image-gallery">
@@ -59,8 +59,14 @@
             </div>
         @endif
 
-        <div class="back-button">
+        <div class="project-actions">
             <a href="{{ route('welcome') }}" class="btn-back">Retour à la liste des projets</a>
+            <a href="{{ route('projects.edit', $project->id) }}" class="btn-edit">Modifier</a>
+            <form action="{{ route('projects.destroy', $project->id) }}" method="POST" class="inline-form">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn-delete">Supprimer</button>
+            </form>
         </div>
     </div>
 </x-app-layout>

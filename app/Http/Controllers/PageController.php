@@ -12,4 +12,9 @@ class PageController
             'projects' => Project::where('visibility', 1)->get(),
         ]);
     }
+
+    public function contact()
+    {
+        return view('contact');
+    }
 }
