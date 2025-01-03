@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'index'])->name('welcome');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,6 +19,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//Projects routes
+    //Projects index
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    //Projects show
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+
 
 require __DIR__.'/auth.php';
