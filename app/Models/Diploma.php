@@ -17,4 +17,9 @@ class Diploma extends Model
         'institution',
         'location',
     ];
+
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
 }

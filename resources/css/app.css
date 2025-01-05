@@ -24,17 +24,24 @@ header {
 
 .main-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
 }
 
 .projects {
-    width: 70%;
+    width: 100%;
+    align-items: center;
 }
 
 .project-cards {
-    width: 100%;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 30px 0;
+    background-color: #f9f9f9;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
@@ -127,6 +134,12 @@ header {
     width: 120px;
     margin: 0;
     padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.navbar-center .logo:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
 }
 
 .navbar-links {
@@ -279,11 +292,13 @@ header {
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
+    transform: scale(1.1);
+    transition: 0.3s ease;
 }
 
 /* Project Card Styles */
@@ -488,4 +503,65 @@ header {
 
 .contact-method a:hover {
     text-decoration: underline;
+}
+
+
+/* Experiences Page Styles */
+
+.experiences {
+    width: 100%;
+}
+
+.experience_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px 0;
+
+
+}
+
+
+
+.experience {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #2c3e50;
+    border-radius: 8px;
+    padding: 0rem 1.6rem;
+    margin-bottom: 30px;
+}
+
+
+.leftPart h3 {
+    color: white;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+
+}
+
+.leftPart p {
+    width: fit-content;
+    color: white;
+    background: rgb(40, 40, 40);
+    padding:0.5rem 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 100px;
+    margin-bottom: 0.5rem;
+}
+
+.rightPart {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.5rem;
+}
+
+.rightPart p {
+    color: white;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+    justify-content: left;
 }

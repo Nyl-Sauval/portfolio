@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -32,6 +33,9 @@ Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects
 
 //Contact routes
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+
+//Index Route
+Route::get('/index', [PageController::class, 'index'])->name('index');
 
 
 require __DIR__.'/auth.php';
