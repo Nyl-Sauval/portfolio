@@ -15,7 +15,7 @@ class ProjectFactory extends Factory
             'title' => 'Cardle',
             'summary' => 'Jeu inspiré de Wordle basé sur des voitures.',
             'description' => 'Cardle est un jeu où les joueurs devinent la marque et le modèle d\'une voiture à partir d\'une image.',
-            'images' => ['car1.jpg', 'car2.jpg'],
+            'images' => ['car1.png', 'car2.jpg'],
             'complexity' => 4,
             'technologies' => ['PHP', 'Laravel', 'TailwindCSS'],
             'start_date' => now()->subMonths(2),
