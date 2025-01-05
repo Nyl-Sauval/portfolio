@@ -9,22 +9,22 @@ class ProjectFactory extends Factory
 {
     protected $model = Project::class;
 
-    public function definition(): array
+    public function definition()
     {
         return [
-            'title' => 'Cardle',
-            'summary' => 'Jeu inspiré de Wordle basé sur des voitures.',
-            'description' => 'Cardle est un jeu où les joueurs devinent la marque et le modèle d\'une voiture à partir d\'une image.',
-            'images' => ['car1.png'],
-            'complexity' => 4,
-            'technologies' => ['PHP', 'Laravel', 'TailwindCSS'],
-            'start_date' => now()->subMonths(2),
-            'end_date' => now(),
-            'project_link' => 'https://cardle-game.com',
-            'status' => 'completed',
-            'type' => 'web',
-            'estimated_duration' => 200,
-            'visibility' => true,
+            'title' => $this->faker->sentence(3),
+            'summary' => $this->faker->paragraph,
+            'description' => $this->faker->text,
+            'images' => [$this->faker->imageUrl()], // Ensure this is an array
+            'complexity' => $this->faker->numberBetween(1, 5),
+            'technologies' => $this->faker->words(3), // Renvoie un tableau de 3 mots directement
+            'start_date' => $this->faker->date,
+            'end_date' => $this->faker->optional()->date,
+            'project_link' => $this->faker->url,
+            'status' => $this->faker->randomElement(['ongoing', 'completed']),
+            'type' => $this->faker->randomElement(['web', 'mobile', 'desktop']),
+            'estimated_duration' => $this->faker->numberBetween(50, 500),
+            'visibility' => $this->faker->boolean,
         ];
     }
 }

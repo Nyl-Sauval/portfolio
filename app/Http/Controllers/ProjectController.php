@@ -9,7 +9,7 @@ class ProjectController extends  Controller
 {
     public function index()
     {
-        return view('projects.index', [
+        return view('project', [
             'projects' => Project::where('visibility', 1)->get(),
         ]);
     }

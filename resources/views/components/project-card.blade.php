@@ -7,8 +7,8 @@
                 <h3>{{ $project->title }}</h3>
                 <h4 style="color: {{ $project->status == 'in-progress' ? 'orange' : ($project->status == 'completed' ? 'green' : 'black') }};" >{{ $project->status }}</h4>
             </div>
-            <p class="start-date">{{ $project->start_date }}</p>
+            <p class="start-date">{{ $project->start_date->format('d/m/y') }}</p>
             <p>{{ $project->summary }}</p>
-            <a href="{{ route('projects.show', $project->id) }}">Voir le projet</a>
+            <a href="{{ route('projects.show', $project->id) }}" class="btn-primary">Voir le projet</a>
         </div>
 </div>

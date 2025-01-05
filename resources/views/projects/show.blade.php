@@ -35,9 +35,9 @@
                         @endfor
                     </div>
                 </li>
-                <li><strong>Projet commencé le :</strong> {{ $project->start_date }}</li>
+                <li><strong>Projet commencé le :</strong> {{ $project->start_date->format('d/m/y') }}</li>
                 @if($project->end_date)
-                    <li><strong>Projet terminé le :</strong> {{ $project->end_date }}</li>
+                    <li><strong>Projet terminé le :</strong> {{ $project->end_date->format('d/m/y') }}</li>
                 @endif
                 <li><strong>Durée estimée :</strong> {{ $project->estimated_duration }} heures</li>
                 <li><strong>Categorie :</strong> {{ $project->type }}</li>

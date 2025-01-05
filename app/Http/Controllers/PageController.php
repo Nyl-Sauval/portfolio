@@ -12,8 +12,7 @@ class PageController
     {
         $experiences = Experience::orderBy('start_date', 'desc')->get();
         $diplomas = Diploma::orderBy('start_date', 'desc')->get();
-        $projects = Project::where('visibility', 1)->get();
-        return view('index', [
+        $projects = Project::where('visibility', 1)->orderBy('start_date', 'desc')->get();        return view('index', [
             'experiences' => $experiences,
             'diplomas' => $diplomas,
             'projects' => $projects,
