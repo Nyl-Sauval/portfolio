@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Project extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -44,4 +46,7 @@ class Project extends Model
         'estimated_duration' => 'integer',
         'visibility' => 'boolean',
     ];
+
+    public $translatable = ['title', 'summary', 'description', 'status', 'type']; // Ces champs seront traduisibles
+
 }

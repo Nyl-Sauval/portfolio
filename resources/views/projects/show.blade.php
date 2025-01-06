@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="project-details card">
-        <h1 class="title">{{ $project->title }}</h1>
-        <p class="updated-at">Mis à jour le : {{ $project->updated_at }}</p>
+        <h1 class="title">{{ $project->getTranslation('title', app()->getLocale())}}</h1>
+        <p class="updated-at">{{ __('updated_at') }} : {{ $project->updated_at }}</p>
 
         <div class="project-body">
             <!-- Main Image -->
@@ -10,23 +10,23 @@
                     <img src="{{ asset('storage/projects/' . $project->images[0]) }}" alt="{{ $project->images[0] }}" class="img-fluid">
                 </div>
             @else
-                <p>Aucune image disponible pour ce projet.</p>
+                <p>{{ __('no_image_available') }}</p>
             @endif
 
             <!-- Description -->
             <div class="description">
-                <h3>Status : {{ $project->status }}</h3>
-                <h3>Description</h3>
-                <p>{{ $project->description }}</p>
+                <h3>{{ __('status') }} : {{ __($project->status) }}</h3> <!-- Traduction du statut -->
+                <h3>{{ __('description') }}</h3>
+                <p>{{ $project->getTranslation('description', app()->getLocale()) }}</p>
             </div>
         </div>
 
         <div class="project-details-info">
-            <h3>Détails</h3>
+            <h3>{{ __('details') }}</h3>
             <ul class="details-list">
                 <!-- Complexité -->
                 <li>
-                    <strong>Complexité :</strong>
+                    <strong>{{ __('complexity') }} :</strong>
                     <div class="complexity-stars">
                         @for ($i = 1; $i <= 5; $i++)
                             <svg xmlns="http://www.w3.org/2000/svg" fill="{{ $i <= $project->complexity ? '#fbbf24' : '#d1d5db' }}" viewBox="0 0 24 24" stroke="currentColor" class="star-icon">
@@ -35,38 +35,64 @@
                         @endfor
                     </div>
                 </li>
-                <li><strong>Projet commencé le :</strong> {{ $project->start_date->format('d/m/y') }}</li>
+                <li><strong>{{ __('project_started_on') }} :</strong> {{ $project->start_date->format('d/m/y') }}</li>
                 @if($project->end_date)
-                    <li><strong>Projet terminé le :</strong> {{ $project->end_date->format('d/m/y') }}</li>
+                    <li><strong>{{ __('project_ended_on') }} :</strong> {{ $project->end_date->format('d/m/y') }}</li>
                 @endif
-                <li><strong>Durée estimée :</strong> {{ $project->estimated_duration }} heures</li>
-                <li><strong>Categorie :</strong> {{ $project->type }}</li>
-                <li><strong>Technologies utilisées :</strong> {{ implode(', ', $project->technologies) }}</li>
-                <li><strong>Lien vers le <a href="{{$project->project_link}}" target="_blank">projet</a></strong></li>
+                <li><strong>{{ __('estimated_duration') }} :</strong> {{ $project->estimated_duration }} {{ __('hours') }}</li>
+                <li><strong>{{ __('category') }} :</strong> {{ $project->getTranslation('type', app()->getLocale()) }}</li> <!-- Traduction du type -->
+                <li><strong>{{ __('technologies_used') }} :</strong> {{ implode(', ', $project->technologies) }}</li>
+                <li><strong>{{ __('link_to_project') }} <a href="{{$project->project_link}}" target="_blank">{{ __('project_link') }}</a></strong></li>
             </ul>
         </div>
 
         @if($project->images)
             <div class="other-images">
-                <h3>Autres images</h3>
-                <div class="image-gallery">
-                    @foreach($project->images as $image)
-                        <div class="gallery-item">
-                            <img src="{{ asset('storage/projects/' . $image) }}" alt="{{ $image }}" class="img-fluid">
-                        </div>
-                    @endforeach
+                <h3>{{ __('other_images') }}</h3>
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        @foreach($project->images as $index => $image)
+                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                <img src="{{ asset('storage/projects/' . $image) }}" alt="Project Image">
+                            </div>
+                        @endforeach
+                    </div>
+                    <button class="carousel-control-prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-control-next" onclick="nextSlide()">&#10095;</button>
                 </div>
             </div>
         @endif
 
         <div class="project-actions">
-            <a href="{{ route('welcome') }}" class="btn-back">Retour à la liste des projets</a>
-            <a href="{{ route('projects.edit', $project->id) }}" class="btn-edit">Modifier</a>
-            <form action="{{ route('projects.destroy', $project->id) }}" method="POST" class="inline-form">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn-delete">Supprimer</button>
-            </form>
+            <a href="{{ route('welcome') }}" class="btn-back">{{ __('back_to_projects') }}</a>
         </div>
     </div>
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-item');
+            if (index >= slides.length-1) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            const offset = -currentSlide * 100;
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+    </script>
 </x-app-layout>

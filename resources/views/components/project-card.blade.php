@@ -1,14 +1,20 @@
 <div class="project-card">
     @if($project->images)
-        <img src="{{ asset('storage/projects/' . $project->images[0]) }}" alt="{{ $project->images[0] }}" class="w-full h-56 object-cover">
+        <img src="{{ asset('storage/projects/' . $project->images[0]) }}" alt="{{ $project->images[0] }}" class="project-image">
     @endif
-        <div>
-            <div class="project-card first-line">
-                <h3>{{ $project->title }}</h3>
-                <h4 style="color: {{ $project->status == 'in-progress' ? 'orange' : ($project->status == 'completed' ? 'green' : 'black') }};" >{{ $project->status }}</h4>
-            </div>
-            <p class="start-date">{{ $project->start_date->format('d/m/y') }}</p>
-            <p>{{ $project->summary }}</p>
-            <a href="{{ route('projects.show', $project->id) }}" class="btn-primary">Voir le projet</a>
+    <div>
+        <div class="first-line">
+            <h3>{{ $project->getTranslation('title', app()->getLocale()) }}</h3>
+            <h4 style="color: {{ $project->status == 'En cours' ? 'orange' : ($project->status == 'Terminé' ? 'green' : 'black') }};">
+                {{ __($project->status) }}
+            </h4>
         </div>
+        <p class="start-date">{{ $project->start_date->format('d/m/y') }}</p>
+        <p>{{ $project->getTranslation('summary', app()->getLocale()) }}</p>
+        <a href="{{ route('projects.show', $project->id) }}" class="btn-primary">{{ __('view_project') }}</a>
+    </div>
 </div>
+
+<style>
+
+</style>
