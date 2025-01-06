@@ -1,30 +1,38 @@
-# Utiliser une image de base PHP avec Nginx pour servir Laravel
-FROM php:8.1-fpm
+# Utiliser PHP 8.2 avec FPM
+FROM php:8.2-fpm-bullseye
 
-# Installer les dépendances requises (comme Composer, les extensions PHP, etc.)
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev git unzip && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd pdo pdo_mysql && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN apt-get update && apt-get install -y \
+    nginx \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    zip \
+    unzip \
+    git \
+    libonig-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd pdo pdo_mysql mbstring \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Installer Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Définir le répertoire de travail
 WORKDIR /var/www/html
 
-# Copier les fichiers du projet dans le conteneur
+# Copier les fichiers du projet
 COPY . .
 
-# Installer les dépendances du projet avec Composer
+# Installer les dépendances du projet
 RUN composer install --no-dev --optimize-autoloader
 
-# Définir les permissions appropriées sur les fichiers et répertoires nécessaires
+# Définir les permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Installer Nginx et configurer le serveur pour Laravel
-RUN apt-get install -y nginx
-COPY nginx/laravel.conf /etc/nginx/sites-available/default
+# Exposer le port 9000 pour PHP-FPM
+EXPOSE 9000
 
-# Exposer le port 80 pour le serveur web
-EXPOSE 80
-
-# Lancer le serveur PHP-FPM et Nginx
+# Commande de démarrage
+CMD ["php-fpm"]
 CMD service nginx start && php-fpm
+
