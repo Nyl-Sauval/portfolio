@@ -45,4 +45,6 @@ RUN chown -R application:application .
 # Donner les permissions nécessaires aux répertoires
 RUN chown -R application:application storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
+RUN cp -n .env.example .env
+
 
