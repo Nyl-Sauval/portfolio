@@ -42,7 +42,6 @@ RUN php artisan key:generate
 # Donner les permissions nécessaires aux répertoires
 RUN chown -R application:application storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
-RUN chmod -R 775 /app/public/build
 
 # Optimizing Configuration loading
 RUN php artisan config:cache
@@ -51,11 +50,19 @@ RUN php artisan route:cache
 # Optimizing View loading
 RUN php artisan view:cache
 
-# Compilation des assets de Breeze (ou de votre site)
-COPY package*.json .
+
+# Installer les dépendances de Node.js
 RUN npm install
-COPY . .
+
+# Créer le répertoire /app/public/build si nécessaire
+RUN mkdir -p /app/public/build
+
+# Compiler les assets avec Vite (ceci crée le répertoire /app/public/build si nécessaire)
 RUN npm run build
+
+# Appliquer les permissions après avoir compilé les assets
+RUN chmod -R 775 /app/public/build
+
 
 RUN chown -R application:application .
 
