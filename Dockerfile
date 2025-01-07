@@ -43,6 +43,10 @@ RUN php artisan key:generate
 RUN chown -R application:application storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
 
+
+RUN php artisan config:clear
+RUN php artisan view:clear
+RUN php artisan route:clear
 # Optimizing Configuration loading
 RUN php artisan config:cache
 # Optimizing Route loading
