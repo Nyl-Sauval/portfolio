@@ -30,7 +30,7 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Exposer le port 8000 (par défaut pour php artisan serve)
-EXPOSE 8000
+EXPOSE 80
 
 # Commande pour lancer le serveur artisan (Laravel)
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
