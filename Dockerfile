@@ -32,6 +32,8 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 RUN mkdir -p database && touch database/database.sqlite
 # Migration de la base de données
 RUN php artisan migrate --force
+RUN composer require fakerphp/faker --dev
+
 RUN php artisan db:seed --force
 RUN chown -R application:application database
 RUN chmod -R 775 database
