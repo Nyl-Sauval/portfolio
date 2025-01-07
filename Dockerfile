@@ -62,7 +62,7 @@ RUN npm install
 RUN mkdir -p /app/public/build
 
 # Compiler les assets avec Vite (ceci crée le répertoire /app/public/build si nécessaire)
-RUN npm run prod
+RUN npm run dev
 
 # Appliquer les permissions après avoir compilé les assets
 RUN chmod -R 775 /app/public/build
