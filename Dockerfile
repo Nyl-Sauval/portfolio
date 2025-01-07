@@ -1,16 +1,19 @@
 FROM webdevops/php-nginx:8.3-alpine
 
 # Installation dans votre Image du minimum pour que Docker fonctionne
-RUN apk add oniguruma-dev libxml2-dev
-RUN docker-php-ext-install \
-        nodejs \
-        npm \
-        bcmath \
-        ctype \
-        fileinfo \
-        mbstring \
-        pdo_mysql \
-        xml
+# Installer les dépendances nécessaires pour Node.js, npm et les extensions PHP
+RUN apk update && apk add --no-cache \
+    nodejs \
+    npm \
+    bash \
+    git \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    libfreetype6-dev \
+    oniguruma-dev \
+    libxml2-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd bcmath ctype fileinfo mbstring pdo_mysql xml
 
 # Installation dans votre image de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
