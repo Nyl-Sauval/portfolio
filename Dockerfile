@@ -68,5 +68,6 @@ RUN php artisan storage:link
 
 RUN chown -R application:application .
 
+RUN ls /app/public/build
 RUN cat /app/public/build/manifest.json
 
