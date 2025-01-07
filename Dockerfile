@@ -32,6 +32,7 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 RUN mkdir -p database && touch database/database.sqlite
 # Migration de la base de données
 RUN php artisan migrate --force
+RUN php artisan db:seed
 RUN chown -R application:application database
 RUN chmod -R 775 database
 # Generate security key
