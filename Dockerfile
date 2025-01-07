@@ -42,6 +42,7 @@ RUN php artisan key:generate
 # Donner les permissions nécessaires aux répertoires
 RUN chown -R application:application storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
+RUN chmod -R 775 /app/public/build
 
 # Optimizing Configuration loading
 RUN php artisan config:cache
