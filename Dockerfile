@@ -68,4 +68,5 @@ RUN php artisan storage:link
 
 RUN chown -R application:application .
 
-RUN cp -n .env.example .env
+RUN cat /app/public/build/manifest.json
+
