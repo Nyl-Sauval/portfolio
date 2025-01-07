@@ -1,19 +1,19 @@
 FROM webdevops/php-nginx:8.3-alpine
 
-# Installation dans votre Image du minimum pour que Docker fonctionne
+# Installation des dépendances nécessaires
 RUN apk add oniguruma-dev libxml2-dev
 RUN docker-php-ext-install \
         bcmath \
         ctype \
         fileinfo \
         mbstring \
-        pdo_mysql \
+        pdo_sqlite \
         xml
 
-# Installation dans votre image de Composer
+# Installation de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Installation dans votre image de NodeJS
+# Installation de NodeJS
 RUN apk add nodejs npm
 
 ENV WEB_DOCUMENT_ROOT /app/public
@@ -21,32 +21,37 @@ ENV APP_ENV production
 WORKDIR /app
 COPY . .
 
-# On copie le fichier .env.example pour le renommer en .env
-# Vous pouvez modifier le .env.example pour indiquer la configuration de votre site pour la production
+# Copier le fichier .env.example pour créer .env
 RUN cp -n .env.example .env
 
-# Installation et configuration de votre site pour la production
-# https://laravel.com/docs/10.x/deployment#optimizing-configuration-loading
+# Installation des dépendances PHP
 RUN composer install --no-interaction --optimize-autoloader --no-dev
-# Generate security key
+
+# Créer la base SQLite si elle n'existe pas
+RUN mkdir -p database && touch database/database.sqlite
+RUN chown -R application:application database
+RUN chmod -R 775 database
+
+# Optimiser la configuration Laravel
 RUN php artisan key:generate
-# Donner les permissions nécessaires aux répertoires
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
+
+# Donner les bonnes permissions pour les répertoires de cache et de storage
 RUN chown -R application:application storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
 
-# Optimizing Configuration loading
-RUN php artisan config:cache
-# Optimizing Route loading
-RUN php artisan route:cache
-# Optimizing View loading
-RUN php artisan view:cache
-
-# Compilation des assets de Breeze (ou de votre site)
+# Compilation des assets front
 RUN npm install
 RUN npm run build
 
+RUN chown -R application:application storage bootstrap/cache database
+RUN chmod -R 775 storage bootstrap/cache database
 RUN chown -R application:application .
 
-RUN cp -n .env.example .env
-
+# Ajouter un script pour gérer la création du fichier SQLite au démarrage
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
 
