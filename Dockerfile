@@ -51,7 +51,7 @@ RUN php artisan route:cache
 RUN php artisan view:cache
 
 # Compilation des assets de Breeze (ou de votre site)
-COPY package*.json
+COPY package*.json .
 RUN npm install
 COPY . .
 RUN npm run build
