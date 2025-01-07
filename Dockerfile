@@ -30,21 +30,23 @@ RUN cp -n .env.example .env
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 # Generate security key
 RUN php artisan key:generate
+# Donner les permissions nécessaires aux répertoires
+RUN chown -R application:application storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
+
 # Optimizing Configuration loading
-#RUN php artisan config:cache
+RUN php artisan config:cache
 # Optimizing Route loading
-#RUN php artisan route:cache
+RUN php artisan route:cache
 # Optimizing View loading
-#RUN php artisan view:cache
+RUN php artisan view:cache
 
 # Compilation des assets de Breeze (ou de votre site)
 RUN npm install
 RUN npm run build
 
 RUN chown -R application:application .
-# Donner les permissions nécessaires aux répertoires
-RUN chown -R application:application storage bootstrap/cache
-RUN chmod -R 775 storage bootstrap/cache
+
 RUN cp -n .env.example .env
 
 
