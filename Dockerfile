@@ -1,36 +1,44 @@
-# Utiliser PHP 8.2 CLI (pas besoin de FPM)
-FROM php:8.2-cli-bullseye
+FROM webdevops/php-nginx:8.3-alpine
 
-# Installer les dépendances nécessaires
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg62-turbo-dev \
-    libfreetype6-dev \
-    zip \
-    unzip \
-    git \
-    libonig-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql mbstring \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Installation dans votre Image du minimum pour que Docker fonctionne
+RUN apk add oniguruma-dev libxml2-dev
+RUN docker-php-ext-install \
+        bcmath \
+        ctype \
+        fileinfo \
+        mbstring \
+        pdo_mysql \
+        xml
 
-# Installer Composer
+# Installation dans votre image de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Définir le répertoire de travail
-WORKDIR /var/www/html
+# Installation dans votre image de NodeJS
+RUN apk add nodejs npm
 
-# Copier les fichiers du projet
+ENV WEB_DOCUMENT_ROOT /app/public
+ENV APP_ENV production
+WORKDIR /app
 COPY . .
 
-# Installer les dépendances du projet
-RUN composer install --no-dev --optimize-autoloader
+# On copie le fichier .env.example pour le renommer en .env
+# Vous pouvez modifier le .env.example pour indiquer la configuration de votre site pour la production
+RUN cp -n .env.example .env
 
-# Définir les permissions nécessaires pour Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Installation et configuration de votre site pour la production
+# https://laravel.com/docs/10.x/deployment#optimizing-configuration-loading
+RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Generate security key
+RUN php artisan key:generate
+# Optimizing Configuration loading
+RUN php artisan config:cache
+# Optimizing Route loading
+RUN php artisan route:cache
+# Optimizing View loading
+RUN php artisan view:cache
 
-# Exposer le port 8000 (par défaut pour php artisan serve)
-EXPOSE 80
+# Compilation des assets de Breeze (ou de votre site)
+RUN npm install
+RUN npm run build
 
-# Commande pour lancer le serveur artisan (Laravel)
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
+RUN chown -R application:application .
