@@ -3,6 +3,8 @@ FROM webdevops/php-nginx:8.3-alpine
 # Installation dans votre Image du minimum pour que Docker fonctionne
 RUN apk add oniguruma-dev libxml2-dev
 RUN docker-php-ext-install \
+        nodejs \
+        npm \
         bcmath \
         ctype \
         fileinfo \
@@ -28,6 +30,9 @@ RUN cp -n .env.example .env
 # Installation et configuration de votre site pour la production
 # https://laravel.com/docs/10.x/deployment#optimizing-configuration-loading
 RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Installer les dépendances Node.js et compiler les assets avec npm
+RUN npm install
+RUN npm run build
 # Créer la base SQLite si elle n'existe pas
 RUN mkdir -p database && touch database/database.sqlite
 # Migration de la base de données
