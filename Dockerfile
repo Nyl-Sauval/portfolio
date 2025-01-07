@@ -1,5 +1,59 @@
-# Étape 1 : Construction des assets avec Node et Laravel Mix
-FROM node:18 AS build
+FROM webdevops/php-nginx:8.3-alpine
+
+# Installation dans votre Image du minimum pour que Docker fonctionne
+RUN apk add oniguruma-dev libxml2-dev
+RUN docker-php-ext-install \
+        bcmath \
+        ctype \
+        fileinfo \
+        mbstring \
+        pdo_mysql \
+        xml
+
+# Installation dans votre image de Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Installation dans votre image de NodeJS
+RUN apk add nodejs npm
+
+ENV WEB_DOCUMENT_ROOT /app/public
+ENV APP_ENV production
+WORKDIR /app
+COPY . .
+
+# On copie le fichier .env.example pour le renommer en .env
+# Vous pouvez modifier le .env.example pour indiquer la configuration de votre site pour la production
+RUN cp -n .env.example .env
+
+# Installation et configuration de votre site pour la production
+# https://laravel.com/docs/10.x/deployment#optimizing-configuration-loading
+RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Créer la base SQLite si elle n'existe pas
+RUN mkdir -p database && touch database/database.sqlite
+# Migration de la base de données
+RUN php artisan migrate --force
+RUN composer require fakerphp/faker --dev
+
+RUN php artisan db:seed --force
+RUN chown -R application:application database
+RUN chmod -R 775 database
+# Generate security key
+RUN php artisan key:generate
+# Donner les permissions nécessaires aux répertoires
+RUN chown -R application:application storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
+
+
+RUN php artisan config:clear
+RUN php artisan view:clear
+RUN php artisan route:clear
+# Optimizing Configuration loading
+RUN php artisan config:cache
+# Optimizing Route loading
+RUN php artisan route:cache
+# Optimizing View loading
+RUN php artisan view:cache
+
 
 # Définition du répertoire de travail
 WORKDIR /app
@@ -13,29 +67,16 @@ RUN npm install
 # Copie du reste du projet
 COPY . .
 
-RUN npm run production || cat /app/storage/logs/laravel.log || echo "Erreur lors de la compilation"
-
 # Compilation des assets avec Laravel Mix en production
 RUN npm run production
 
+# Appliquer les permissions après avoir compilé les assets
+RUN chmod -R 775 /app/public/build
+RUN cp /app/public/build/.vite/manifest.json /app/public/build/manifest.json
+RUN php artisan storage:link
 
-# Étape 2 : Image PHP avec PHP-FPM
-FROM php:8.1-fpm
+RUN chown -R application:application .
 
-# Définition du répertoire de travail
-WORKDIR /var/www/html
-
-# Copie des fichiers du projet (excepté node_modules)
-COPY . .
-
-# Copie uniquement les assets générés par Laravel Mix depuis l'étape de build
-COPY --from=build /app/public /var/www/html/public
-
-# Attribution des droits au dossier public pour éviter les problèmes de permissions
-RUN chown -R www-data:www-data /var/www/html/public
-
-# Expose le port 80
-EXPOSE 80
-
-# Démarrage de PHP-FPM
-CMD ["php-fpm"]
+RUN ls /app/public/build
+RUN ls /app/public/build/assets
+RUN cat /app/public/build/manifest.json
