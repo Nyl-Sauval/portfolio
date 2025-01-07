@@ -68,7 +68,7 @@ RUN npm install
 COPY . .
 
 # Compilation des assets avec Laravel Mix en production
-RUN npm run production
+RUN npm run build
 
 # Appliquer les permissions après avoir compilé les assets
 RUN chmod -R 775 /app/public/build
