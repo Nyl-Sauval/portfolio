@@ -50,8 +50,5 @@ RUN chown -R application:application storage bootstrap/cache database
 RUN chmod -R 775 storage bootstrap/cache database
 RUN chown -R application:application .
 
-# Ajouter un script pour gérer la création du fichier SQLite au démarrage
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-ENTRYPOINT ["docker-entrypoint.sh"]
+
 
