@@ -1,71 +1,59 @@
-# Utilisation de l'image PHP-FPM avec Alpine
-FROM php:8.1-fpm-alpine
+FROM webdevops/php-nginx:8.3-alpine
 
-# Installer les dépendances nécessaires pour Node.js, npm et les extensions PHP
-RUN apk update && apk add --no-cache \
-    nodejs \
-    npm \
-    bash \
-    git \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    libfreetype6-dev \
-    oniguruma-dev \
-    libxml2-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd bcmath ctype fileinfo mbstring pdo_mysql xml
+# Installation dans votre Image du minimum pour que Docker fonctionne
+RUN apk add oniguruma-dev libxml2-dev
+RUN docker-php-ext-install \
+        bcmath \
+        ctype \
+        fileinfo \
+        mbstring \
+        pdo_mysql \
+        xml
 
-# Installation de Composer (pas besoin de copier depuis un autre conteneur)
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Installation dans votre image de Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Définir le répertoire de travail
+# Installation dans votre image de NodeJS
+RUN apk add nodejs npm
+
+ENV WEB_DOCUMENT_ROOT /app/public
+ENV APP_ENV production
 WORKDIR /app
-
-# Copier les fichiers du projet dans le conteneur
 COPY . .
 
-# Copier le fichier .env.example et le renommer en .env
+# On copie le fichier .env.example pour le renommer en .env
+# Vous pouvez modifier le .env.example pour indiquer la configuration de votre site pour la production
 RUN cp -n .env.example .env
 
-# Installation des dépendances PHP avec Composer
+# Installation et configuration de votre site pour la production
+# https://laravel.com/docs/10.x/deployment#optimizing-configuration-loading
 RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Créer la base SQLite si elle n'existe pas
+RUN mkdir -p database && touch database/database.sqlite
+# Migration de la base de données
+RUN php artisan migrate --force
+RUN composer require fakerphp/faker --dev
 
-# Installer les dépendances Node.js et compiler les assets avec npm
+RUN php artisan db:seed --force
+RUN chown -R application:application database
+RUN chmod -R 775 database
+# Generate security key
+RUN php artisan key:generate
+# Donner les permissions nécessaires aux répertoires
+RUN chown -R application:application storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
+
+# Optimizing Configuration loading
+RUN php artisan config:cache
+# Optimizing Route loading
+RUN php artisan route:cache
+# Optimizing View loading
+RUN php artisan view:cache
+
+# Compilation des assets de Breeze (ou de votre site)
 RUN npm install
 RUN npm run build
 
-# Créer la base SQLite si elle n'existe pas
-RUN mkdir -p database && touch database/database.sqlite
+RUN chown -R application:application .
 
-# Migration de la base de données
-RUN php artisan migrate --force
-
-# Installation de Faker pour les seeds
-RUN composer require fakerphp/faker --dev
-
-# Exécution des seeders
-RUN php artisan db:seed --force
-
-# Donner les bonnes permissions
-RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache /app/database && \
-    chmod -R 775 /app/storage /app/bootstrap/cache /app/database
-
-# Générer la clé de sécurité
-RUN php artisan key:generate
-
-# Optimisation de la configuration, des routes et des vues
-RUN php artisan config:cache
-RUN php artisan route:cache
-RUN php artisan view:cache
-
-# Compiler à nouveau les assets de Breeze ou de ton site
-RUN npm run build
-
-# Finaliser en définissant le bon utilisateur
-USER www-data
-
-# Exposer le port de l'application
-EXPOSE 80
-
-# Lancer PHP-FPM
-CMD ["php-fpm"]
+RUN cp -n .env.example .env
