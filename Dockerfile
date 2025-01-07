@@ -30,6 +30,8 @@ RUN cp -n .env.example .env
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 # Créer la base SQLite si elle n'existe pas
 RUN mkdir -p database && touch database/database.sqlite
+# Migration de la base de données
+RUN php artisan migrate --force
 RUN chown -R application:application database
 RUN chmod -R 775 database
 # Generate security key
