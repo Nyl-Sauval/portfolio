@@ -63,7 +63,7 @@ RUN npm run build
 # Appliquer les permissions après avoir compilé les assets
 RUN chmod -R 775 /app/public/build
 RUN cp /app/public/build/.vite/manifest.json /app/public/build/manifest.json
-
+RUN php artisan storage:link
 
 
 RUN chown -R application:application .
