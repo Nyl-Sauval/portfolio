@@ -52,7 +52,6 @@ RUN php artisan view:cache
 
 # Compilation des assets de Breeze (ou de votre site)
 RUN npm install
-RUN npm run build
 
 RUN chown -R application:application .
 
