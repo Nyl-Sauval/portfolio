@@ -9,7 +9,6 @@ RUN apk update && apk add --no-cache \
     git \
     libpng-dev \
     libjpeg-turbo-dev \
-    libfreetype6-dev \
     oniguruma-dev \
     libxml2-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
