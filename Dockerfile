@@ -1,8 +1,8 @@
-# Utiliser PHP 8.2 avec FPM
-FROM php:8.2-fpm-bullseye
+# Utiliser PHP 8.2 CLI (pas besoin de FPM)
+FROM php:8.2-cli-bullseye
 
+# Installer les dépendances nécessaires
 RUN apt-get update && apt-get install -y \
-    nginx \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
@@ -26,13 +26,11 @@ COPY . .
 # Installer les dépendances du projet
 RUN composer install --no-dev --optimize-autoloader
 
-# Définir les permissions
+# Définir les permissions nécessaires pour Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Exposer le port 9000 pour PHP-FPM
-EXPOSE 80
+# Exposer le port 8000 (par défaut pour php artisan serve)
+EXPOSE 8000
 
-# Commande de démarrage
-CMD ["php-fpm"]
-CMD service nginx start && php-fpm
-
+# Commande pour lancer le serveur artisan (Laravel)
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
