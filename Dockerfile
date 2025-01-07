@@ -13,6 +13,8 @@ RUN npm install
 # Copie du reste du projet
 COPY . .
 
+RUN npm run production || cat /app/storage/logs/laravel.log || echo "Erreur lors de la compilation"
+
 # Compilation des assets avec Laravel Mix en production
 RUN npm run production
 
