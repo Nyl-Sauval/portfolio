@@ -1,12 +1,15 @@
-FROM webdevops/php-nginx:8.3-alpine
+# Utilisation de l'image PHP-FPM avec Alpine
+FROM php:8.1-fpm-alpine
 
-# Installation dans votre Image du minimum pour que Docker fonctionne
 # Installer les dépendances nécessaires pour Node.js, npm et les extensions PHP
 RUN apk update && apk add --no-cache \
     nodejs \
     npm \
     bash \
     git \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    libfreetype6-dev \
     oniguruma-dev \
     libxml2-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
