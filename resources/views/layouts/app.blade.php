@@ -13,12 +13,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <script src="{{asset('js/app.css')}}"></script>
-
-
-
-
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -35,6 +31,7 @@
 
     <!-- Page Content -->
     <main>
+        {{ asset('css/app.css') }}
         {{ $slot }}
     </main>
 </div>
