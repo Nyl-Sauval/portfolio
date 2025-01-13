@@ -63,9 +63,3 @@ COPY package.json package-lock.json ./
 
 # Appliquer les permissions après avoir compilé les assets
 RUN php artisan storage:link
-
-RUN php artisan storage:link
-
-RUN ls /app/public/build
-RUN ls /app/public/build/assets
-RUN cat /app/public/build/manifest.json
