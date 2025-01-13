@@ -61,15 +61,6 @@ WORKDIR /app
 # Copie des fichiers package.json et package-lock.json pour installer les dépendances
 COPY package.json package-lock.json ./
 
-# Installation des dépendances NPM
-RUN npm install
-
-# Copie du reste du projet
-COPY . .
-
-# Compilation des assets avec Laravel Mix en production
-RUN npm run build
-
 # Appliquer les permissions après avoir compilé les assets
 RUN chmod -R 775 /app/public/build
 RUN cp /app/public/build/.vite/manifest.json /app/public/build/manifest.json
