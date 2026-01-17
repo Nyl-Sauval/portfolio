@@ -18,6 +18,6 @@ class ExperienceController extends Controller
     public function show($id)
     {
         $experience = Experience::findOrFail($id);
-        return view('experiences.show', compact('experience')); // Retourne la vue avec les données
+        return view('experiences.show', compact('experience'));
     }
 }
