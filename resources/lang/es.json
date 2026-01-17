@@ -43,6 +43,14 @@
     "programming_languages": "Lenguajes de programación",
     "database": "Base de datos",
     "tools": "Herramientas",
-    "other": "Otras habilidades"
+    "other": "Otras habilidades",
+    "experiences_type": "Tipo de experiencia",
+    "experiences_company": "Empresa",
+    "experiences_location": "Ubicación",
+    "experiences_started_on": "Iniciado el",
+    "experiences_ended_on": "Terminado el",
+    "experiences_description": "Descripción",
+    "experiences_competencies": "Habilidades adquiridas",
+    "experiences_back": "Volver"
 }
 

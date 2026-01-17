@@ -14,4 +14,10 @@ class ExperienceController extends Controller
         $diplomas = Diploma::orderBy('start_date', 'desc')->get();
         return view('index', compact('experiences'), compact('diplomas'));
     }
+
+    public function show($id)
+    {
+        $experience = Experience::findOrFail($id);
+        return view('experiences.show', compact('experience')); // Retourne la vue avec les données
+    }
 }

@@ -30,7 +30,7 @@ class Experience extends Model
         'competencies' => 'json',
     ];
 
-    public $translatable = ['title', 'type', 'company', 'location', 'type', 'description', 'compentencies']; // Ces champs seront traduisibles
+    public $translatable = ['title', 'type', 'company', 'location', 'type', 'description', 'competencies']; // Ces champs seront traduisibles
 
 
 }

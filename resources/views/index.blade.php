@@ -19,7 +19,9 @@
             <h2>{{ __('my_experiences') }}</h2>
             <div class="experience_content">
                 @foreach($experiences as $experience)
-                    <x-experiences :experience="$experience"/>
+                    <a class="experience_link" href="{{ route('experiences.show', $experience->id) }}">
+                        <x-experiences :experience="$experience"/>
+                    </a>
                 @endforeach
             </div>
         </div>

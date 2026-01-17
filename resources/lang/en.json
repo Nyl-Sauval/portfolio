@@ -44,6 +44,14 @@
     "programming_languages": "Programming Languages",
     "database": "Database",
     "tools": "Tools",
-    "other": "Other Skills"
+    "other": "Other Skills",
+    "experiences_type": "Type",
+    "experiences_company": "Company",
+    "experiences_location": "Location",
+    "experiences_started_on": "Started on",
+    "experiences_ended_on": "Ended on",
+    "experiences_description": "Description",
+    "experiences_competencies": "Acquired Skills",
+    "experiences_back": "Back"
 }
 

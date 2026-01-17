@@ -23,6 +23,7 @@ Route::middleware([SetLanguage::class])->group(function () {
     Route::get('/skills', function () {
         return view('skills');
     })->name('skills');
+    Route::get('/experiences/{id}', [ExperienceController::class, 'show'])->name('experiences.show');
 
 
 
