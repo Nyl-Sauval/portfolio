@@ -1,4 +1,4 @@
-import '../../public/js/bootstrap.js';
+import '../../storage/app/public/js/bootstrap.js';
 
 import Alpine from 'alpinejs';
 

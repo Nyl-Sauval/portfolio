@@ -7,8 +7,3 @@ vendor
 .gitignore
 docker-compose.yml
 storage/*.key
-public/storage
-storage/logs
-storage/framework/views
-storage/framework/cache
-storage/framework/sessions
