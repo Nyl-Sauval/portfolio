@@ -18,6 +18,8 @@ class ExperienceFactory extends Factory
             'end_date' => $this->faker->date,
             'company' => $this->faker->company,
             'location' => $this->faker->city,
+            'description' => $this->faker->paragraph,
+            'competencies' => $this->faker->sentence,
         ];
     }
 }

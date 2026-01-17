@@ -19,14 +19,18 @@ class Experience extends Model
         'end_date',
         'company',
         'location',
+        'description',
+        'competencies',
     ];
 
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',
+        'description' => 'json',
+        'competencies' => 'json',
     ];
 
-    public $translatable = ['title', 'type', 'company', 'location', 'type']; // Ces champs seront traduisibles
+    public $translatable = ['title', 'type', 'company', 'location', 'type', 'description', 'competencies']; // Ces champs seront traduisibles
 
 
 }

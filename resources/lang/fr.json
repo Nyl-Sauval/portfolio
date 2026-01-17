@@ -27,7 +27,7 @@
     "hours": "heures",
     "category": "Catégorie",
     "technologies_used": "Technologies utilisées",
-    "link_to_project": "Lien vers le projet",
+    "link_to_project": "Lien vers le ",
     "project_link": "projet",
     "other_images": "Autres images",
     "back_to_projects": "Retour à la liste des projets",
@@ -44,6 +44,14 @@
     "programming_languages": "Langages de programmation",
     "database": "Base de données",
     "tools": "Outils",
-    "other": "Autres compétences"
+    "other": "Autres compétences",
+    "experiences_type": "Type d'expérience",
+    "experiences_company": "Entreprise",
+    "experiences_location": "Lieu",
+    "experiences_started_on": "Commencé le",
+    "experiences_ended_on": "Terminé le",
+    "experiences_description": "Description",
+    "experiences_competencies": "Compétences acquises",
+    "experiences_back": "Retour"
 }
 

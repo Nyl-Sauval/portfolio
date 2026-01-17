@@ -73,9 +73,9 @@ class ProjectSeeder extends Seeder
                     'es' => 'En progreso'
                 ],
                 'type' => [
-                    'fr' => 'Scolaire',
-                    'en' => 'Academic',
-                    'es' => 'Académico'
+                    'fr' => 'Personnel',
+                    'en' => 'Personal',
+                    'es' => 'Personal'
                 ],
                 'estimated_duration' => 15,
                 'visibility' => true,
@@ -236,7 +236,7 @@ class ProjectSeeder extends Seeder
                     'en' => 'The "Mastermind" project replicates the classic game where the player must guess a combination of four colors from a selection of six possible colors. After each attempt, the game provides feedback on how many colors are correctly placed and how many are in the combination but in the wrong position, giving the player clues to adjust their guesses.\n\nThe program allows the player to play against the computer, which randomly generates a secret combination. The player must guess this combination in a limited number of attempts. A graphical interface was created with JavaFX, enabling the player to select colors for each attempt and view feedback after each guess.\n\nThe application manages various aspects of the game: generating the secret combination, validating the player\'s inputs, displaying results after each attempt, and managing the number of remaining attempts.',
                     'es' => 'El proyecto "Mastermind" reproduce el juego clásico en el que el jugador debe adivinar una combinación de cuatro colores de una selección de seis colores posibles. Después de cada intento, el juego proporciona retroalimentación sobre cuántos colores están correctamente colocados y cuántos están en la combinación pero en la posición incorrecta, dando pistas al jugador para ajustar sus suposiciones.\n\nEl programa permite que el jugador juegue contra la computadora, que genera aleatoriamente una combinación secreta. El jugador debe adivinar esta combinación en un número limitado de intentos. Se creó una interfaz gráfica con JavaFX, que permite al jugador seleccionar los colores para cada intento y ver los resultados después de cada adivinanza.\n\nLa aplicación maneja varios aspectos del juego: la generación de la combinación secreta, la validación de las entradas del jugador, la visualización de los resultados después de cada intento y la gestión del número de intentos restantes.'
                 ],
-                'images' => ['mastermind1.png'],
+                'images' => [],
                 'complexity' => 3,
                 'technologies' => ['Java', 'JavaFX', 'Maven', 'JUnit'],
                 'start_date' => '2024-04-01',
@@ -253,6 +253,49 @@ class ProjectSeeder extends Seeder
                     'es' => 'Personal'
                 ],
                 'estimated_duration' => 40,
+                'visibility' => true,
+            ],
+            [
+                'title' => [
+                    'fr' => 'DriveOps',
+                    'en' => 'DriveOps',
+                    'es' => 'DriveOps'
+                ],
+                'summary' => [
+                    'fr' => 'Application de gestion d’entretien automobile avec suivi, factures et notifications.',
+                    'en' => 'Vehicle maintenance management application with tracking, invoices, and notifications.',
+                    'es' => 'Aplicación de gestión de mantenimiento de vehículos con seguimiento, facturas y notificaciones.'
+                ],
+                'description' => [
+                    'fr' => 'DriveOps est un projet personnel de gestion d’entretien automobile destiné aux particuliers. Il permet de suivre précisément l’historique d’un ou plusieurs véhicules, incluant les entretiens récurrents basés sur le kilométrage ou le temps, la centralisation et l’archivage des factures, la gestion des pièces remplacées, ainsi que des notifications automatiques pour anticiper les opérations à venir (révisions, contrôles, échéances). L’objectif est de fiabiliser le suivi, d’éviter les oublis et de disposer d’une vision claire des coûts et de l’état du véhicule dans le temps.
+
+Techniquement, DriveOps repose sur une architecture API REST avec un back-end Laravel assurant la logique métier, la persistance des données et la gestion des règles d’entretien. Le front-end est développé avec Angular, offrant une interface moderne, responsive et orientée expérience utilisateur. Le projet intègre une authentification sécurisée, une gestion des rôles, et est conçu pour être évolutif, avec une séparation claire entre front et back, facilitant la maintenance, les tests et le déploiement.',
+
+                    'en' => 'DriveOps is a personal vehicle maintenance management project designed for individual users. It enables accurate tracking of one or multiple vehicles, including mileage- or time-based recurring maintenance, centralized invoice storage, replaced parts management, and automatic notifications to anticipate upcoming operations such as services, inspections, or deadlines. The goal is to provide a reliable maintenance history, prevent missed operations, and offer a clear overview of vehicle condition and costs over time.
+
+From a technical standpoint, DriveOps is built on a REST API architecture with a Laravel back-end handling business logic, data persistence, and maintenance rules. The front-end is developed with Angular, delivering a modern, responsive, and user-focused interface. The project includes secure authentication, role management, and is designed to be scalable, with a clear separation between front and back-end to simplify maintenance, testing, and deployment.',
+
+                    'es' => 'DriveOps es un proyecto personal de gestión del mantenimiento de vehículos orientado a usuarios particulares. Permite realizar un seguimiento preciso de uno o varios vehículos, incluyendo mantenimientos recurrentes basados en kilometraje o tiempo, la centralización de facturas, la gestión de piezas sustituidas y notificaciones automáticas para anticipar operaciones futuras como revisiones, inspecciones o vencimientos. El objetivo es garantizar un historial fiable, evitar olvidos y ofrecer una visión clara del estado y los costes del vehículo a lo largo del tiempo.
+
+A nivel técnico, DriveOps se basa en una arquitectura de API REST con un back-end en Laravel encargado de la lógica de negocio, la persistencia de datos y las reglas de mantenimiento. El front-end está desarrollado con Angular, proporcionando una interfaz moderna, responsiva y centrada en el usuario. El proyecto incluye autenticación segura, gestión de roles y está diseñado para ser escalable, con una separación clara entre front-end y back-end que facilita el mantenimiento, las pruebas y el despliegue.'
+                ],
+                'type' => [
+                    'fr' => 'Personnel',
+                    'en' => 'Personal',
+                    'es' => 'Personal'
+                ],
+                'status' => [
+                    'fr' => 'En cours',
+                    'en' => 'In progress',
+                    'es' => 'En progreso'
+                ],
+                'images' => ['driveops1.png'],
+                'complexity' => 4,
+                'technologies' => ['Angular', 'TypeScript', 'Laravel', 'PHP', 'API REST', 'SQLite', 'HTML', 'CSS'],
+                'start_date' => '2025-09-13',
+                'end_date' => null,
+                'project_link' => null,
+                'estimated_duration' => 200,
                 'visibility' => true,
             ]
         ]);
