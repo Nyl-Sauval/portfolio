@@ -17,7 +17,7 @@
             <div class="description">
                 <h3>{{ __('status') }} : {{ __($project->status) }}</h3> <!-- Traduction du statut -->
                 <h3>{{ __('description') }}</h3>
-                <p>{{ $project->getTranslation('description', app()->getLocale()) }}</p>
+                <p>{!! nl2br(e($project->description)) !!}</p>
             </div>
         </div>
 
@@ -42,7 +42,9 @@
                 <li><strong>{{ __('estimated_duration') }} :</strong> {{ $project->estimated_duration }} {{ __('hours') }}</li>
                 <li><strong>{{ __('category') }} :</strong> {{ $project->getTranslation('type', app()->getLocale()) }}</li> <!-- Traduction du type -->
                 <li><strong>{{ __('technologies_used') }} :</strong> {{ implode(', ', $project->technologies) }}</li>
-                <li><strong>{{ __('link_to_project') }} <a href="{{$project->project_link}}" target="_blank">{{ __('project_link') }}</a></strong></li>
+                @if($project->project_link)
+                    <li><strong>{{ __('link_to_project') }} <a href="{{$project->project_link}}" target="_blank">{{ __('project_link') }}</a></strong></li>
+                @endif
             </ul>
         </div>
 
