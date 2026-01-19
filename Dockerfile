@@ -21,12 +21,16 @@ ENV APP_ENV production
 WORKDIR /app
 COPY . .
 
-# On copie le fichier .env.example pour le renommer en .env
-# Vous pouvez modifier le .env.example pour indiquer la configuration de votre site pour la production
+RUN composer install --no-dev --optimize-autoloader
+
+RUN npm install
+RUN npm run build
+
+RUN php artisan optimize:clear
+RUN php artisan optimize
+
 RUN cp -n .env.example .env
 
-# Installation et configuration de votre site pour la production
-# https://laravel.com/docs/10.x/deployment#optimizing-configuration-loading
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 # Créer la base SQLite si elle n'existe pas
 RUN mkdir -p database && touch database/database.sqlite
