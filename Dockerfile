@@ -1,69 +1,52 @@
 FROM webdevops/php-nginx:8.3-alpine
 
-# Installation dans votre Image du minimum pour que Docker fonctionne
-RUN apk add oniguruma-dev libxml2-dev
-RUN docker-php-ext-install \
-        bcmath \
-        ctype \
-        fileinfo \
-        mbstring \
-        pdo_mysql \
-        xml
+# Dépendances PHP nécessaires
+RUN apk add --no-cache \
+    oniguruma-dev \
+    libxml2-dev \
+    nodejs \
+    npm
 
-# Installation dans votre image de Composer
+RUN docker-php-ext-install \
+    bcmath \
+    ctype \
+    fileinfo \
+    mbstring \
+    pdo_mysql \
+    xml
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Installation dans votre image de NodeJS
-RUN apk add nodejs npm
+ENV WEB_DOCUMENT_ROOT=/app/public
+ENV APP_ENV=production
 
-ENV WEB_DOCUMENT_ROOT /app/public
-ENV APP_ENV production
 WORKDIR /app
+
+# Dépendances PHP (cache Docker)
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --no-interaction --optimize-autoloader
+
+# Dépendances front
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# Code applicatif
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
-
-RUN npm install
+# Build assets
 RUN npm run build
 
-RUN php artisan optimize:clear
-RUN php artisan optimize
-
-RUN cp -n .env.example .env
-
-RUN composer install --no-interaction --optimize-autoloader --no-dev
-# Créer la base SQLite si elle n'existe pas
-RUN mkdir -p database && touch database/database.sqlite
-# Migration de la base de données
-RUN php artisan migrate --force
-RUN composer require fakerphp/faker --dev
-
-RUN php artisan db:seed --force
-RUN chown -R application:application database
-RUN chmod -R 775 database
-# Generate security key
-RUN php artisan key:generate
-# Donner les permissions nécessaires aux répertoires
-RUN chown -R application:application storage bootstrap/cache
-RUN chmod -R 775 storage bootstrap/cache
-
-
-RUN php artisan config:clear
-RUN php artisan view:clear
-RUN php artisan route:clear
-# Optimizing Configuration loading
-RUN php artisan config:cache
-# Optimizing Route loading
-RUN php artisan route:cache
-# Optimizing View loading
-RUN php artisan view:cache
-
-
-# Définition du répertoire de travail
-WORKDIR /app
-
-# Copie des fichiers package.json et package-lock.json pour installer les dépendances
-COPY package.json package-lock.json ./
-
-# Appliquer les permissions après avoir compilé les assets
+# Optimisations Laravel
 RUN php artisan storage:link
+
+# Permissions
+RUN mkdir -p database \
+ && chown -R application:application \
+    storage \
+    bootstrap/cache \
+    database \
+ && chmod -R 775 \
+    storage \
+    bootstrap/cache \
+    database
+

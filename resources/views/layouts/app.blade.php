@@ -13,8 +13,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
-    <script src="{{ URL::asset('js/app.js') }}"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 <body class="font-sans antialiased">
@@ -32,7 +31,6 @@
 
     <!-- Page Content -->
     <main>
-        {{ URL::asset('css/app.css') }}
         {{ $slot }}
     </main>
 </div>
