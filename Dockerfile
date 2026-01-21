@@ -30,7 +30,8 @@ COPY config/ ./config/
 COPY database/ ./database/
 COPY resources/lang ./resources/lang
 COPY resources/views ./resources/views
-RUN composer install --no-dev --no-interaction --optimize-autoloader
+
+RUN composer update && composer install --no-dev --no-interaction --optimize-autoloader
 
 # Dépendances front
 COPY package.json package-lock.json ./
