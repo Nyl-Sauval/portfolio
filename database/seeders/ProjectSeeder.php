@@ -297,6 +297,73 @@ A nivel técnico, DriveOps se basa en una arquitectura de API REST con un back-e
                 'project_link' => null,
                 'estimated_duration' => 200,
                 'visibility' => true,
+            ],
+            [
+                'title' => [
+                    'fr' => 'DriveBy',
+                    'en' => 'DriveBy',
+                    'es' => 'DriveBy'
+                ],
+                'summary' => [
+                    'fr' => 'Application de location de véhicules avec API centralisée, client web et application mobile.',
+                    'en' => 'Vehicle rental application with centralized API, web client, and mobile application.',
+                    'es' => 'Aplicación de alquiler de vehículos con API centralizada, cliente web y aplicación móvil.'
+                ],
+                'description' => [
+                    'fr' => 'DriveBy est un projet scolaire de location de véhicules reposant sur une architecture client–serveur effectué avec 2 autres camarades. L’application s’appuie sur une API développée avec Laravel, consommée par un client web Angular et une application mobile Ionic. L’objectif est de centraliser la logique métier et les données afin de proposer une solution cohérente et maintenable pour la gestion des locations de véhicules, aussi bien côté clients que côté agents d’agence.
+
+Le backend assure la gestion des utilisateurs, des véhicules, des agences et des locations. Il intègre des mécanismes de persistance des données via migrations, seeders et factories, ainsi que des fonctionnalités transverses telles que la gestion des rôles, des sessions, des files d’attente et la génération de factures et d’avenants.
+
+Le client web Angular constitue l’interface principale de l’application. Il permet aux clients de rechercher et réserver des véhicules selon différents critères (agence, prix, catégorie, disponibilité), de gérer leurs locations, de modifier ou annuler des réservations et de télécharger leurs documents. Les agents disposent d’un espace dédié leur permettant de gérer les demandes de location, les retraits et retours de véhicules, l’état des véhicules, la maintenance, ainsi que le suivi du kilométrage et du niveau de carburant.
+
+L’application mobile Ionic propose un accès simplifié destiné aux clients, limité à l’authentification, à la recherche de véhicules et à la consultation des locations futures ou en cours.',
+
+                    'en' => 'DriveBy is a school project focused on vehicle rental management based on a client–server architecture. The application relies on a API developed with Laravel, consumed by an Angular web client and an Ionic mobile application. The goal is to centralize business logic and data in order to provide a consistent and maintainable solution for managing vehicle rentals, for both customers and agency staff.
+
+The backend handles user management, vehicles, agencies, and rentals. It includes data persistence mechanisms using migrations, seeders, and factories, as well as cross-cutting features such as role management, session handling, background queues, and invoice and amendment generation.
+
+The Angular web client is the main interface of the application. It allows customers to search and reserve vehicles using various criteria (agency, price, category, availability), manage their rentals, modify or cancel reservations, and download related documents. Agents have a dedicated interface to manage rental requests, vehicle check-outs and returns, vehicle condition updates, maintenance states, and to track mileage and fuel levels.
+
+The Ionic mobile application provides a simplified access for customers, limited to authentication, vehicle search, and viewing upcoming or ongoing rentals.',
+
+                    'es' => 'DriveBy es un proyecto académico de gestión de alquiler de vehículos basado en una arquitectura cliente–servidor. La aplicación se apoya en una API desarrollada con Laravel, consumida por un cliente web en Angular y una aplicación móvil en Ionic. El objetivo es centralizar la lógica de negocio y los datos para ofrecer una solución coherente y mantenible para la gestión de alquileres de vehículos, tanto para clientes como para agentes de agencia.
+
+El backend gestiona los usuarios, los vehículos, las agencias y los alquileres. Integra mecanismos de persistencia de datos mediante migraciones, seeders y factories, así como funcionalidades transversales como la gestión de roles, sesiones, colas en segundo plano y la generación de facturas y anexos.
+
+El cliente web Angular es la interfaz principal de la aplicación. Permite a los clientes buscar y reservar vehículos según distintos criterios (agencia, precio, categoría, disponibilidad), gestionar sus alquileres, modificar o cancelar reservas y descargar sus documentos. Los agentes disponen de una interfaz dedicada para gestionar solicitudes de alquiler, entregas y devoluciones de vehículos, el estado de los vehículos, la mantenimiento, así como el seguimiento del kilometraje y del nivel de combustible.
+
+La aplicación móvil Ionic ofrece un acceso simplificado para los clientes, limitado a la autenticación, la búsqueda de vehículos y la consulta de alquileres futuros o en curso.'
+                ],
+                'type' => [
+                    'fr' => 'Scolaire',
+                    'en' => 'Academic',
+                    'es' => 'Académico'
+                ],
+                'status' => [
+                    'fr' => 'Terminé',
+                    'en' => 'Completed',
+                    'es' => 'Finalizado'
+                ],
+                'images' => ['driveby1.png', 'driveby2.png', 'driveby3.png', 'driveby4.png', 'driveby5.png', 'driveby6.png', 'driveby7.png', 'driveby8.png'],
+                'complexity' => 4,
+                'technologies' => [
+                    'Laravel',
+                    'PHP',
+                    'API',
+                    'Angular',
+                    'TypeScript',
+                    'Ionic',
+                    'JavaScript',
+                    'SQLite',
+                    'MySQL',
+                    'HTML',
+                    'CSS'
+                ],
+                'start_date' => '05/06/2025',
+                'end_date' => '03/07/2025',
+                'project_link' => 'https://gitlab.univ-artois.fr/but22/s4/s4-a-01/location-de-voitures',
+                'estimated_duration' => '220',
+                'visibility' => true,
             ]
         ]);
     }
