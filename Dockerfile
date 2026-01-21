@@ -25,7 +25,7 @@ WORKDIR /app
 # Dépendances PHP (cache Docker)
 COPY composer.json composer.lock ./
 COPY app/functions.php app/functions.php
-RUN composer install --no-dev --no-interaction --optimize-autoloader
+RUN composer update && composer install --no-dev --no-interaction --optimize-autoloader
 
 # Dépendances front
 COPY package.json package-lock.json ./
