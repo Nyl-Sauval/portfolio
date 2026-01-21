@@ -28,6 +28,8 @@ COPY app/ ./app/
 COPY routes/ ./routes/
 COPY config/ ./config/
 COPY database/ ./database/
+COPY resources/lang ./resources/lang
+COPY resources/views ./resources/views
 RUN composer install --no-dev --no-interaction --optimize-autoloader
 
 # Dépendances front
