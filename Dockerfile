@@ -24,12 +24,11 @@ WORKDIR /app
 
 # Dépendances PHP (cache Docker)
 COPY composer.json composer.lock ./
-COPY app/ ./app/
-COPY routes/ ./routes/
-COPY config/ ./config/
-COPY database/ ./database/
-COPY resources/lang ./resources/lang
-COPY resources/views ./resources/views
+COPY artisan ./artisan
+COPY bootstrap ./bootstrap
+COPY app/functions.php ./app/functions.php
+COPY routes ./routes
+COPY app ./app
 RUN composer update && composer install --no-dev --no-interaction --optimize-autoloader
 
 # Dépendances front
