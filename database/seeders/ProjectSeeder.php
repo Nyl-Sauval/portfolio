@@ -344,7 +344,7 @@ La aplicación móvil Ionic ofrece un acceso simplificado para los clientes, lim
                     'en' => 'Completed',
                     'es' => 'Finalizado'
                 ],
-                'images' => ['driveby1.png', 'driveby2.png', 'driveby3.png', 'driveby4.png', 'driveby5.png', 'driveby6.png', 'driveby7.png', 'driveby8.png'],
+                'images' => ['driveBy1.png', 'driveBy2.png', 'driveBy3.png', 'driveBy4.png', 'driveBy5.png', 'driveBy6.png', 'driveBy7.png', 'driveBy8.png'],
                 'complexity' => 4,
                 'technologies' => [
                     'Laravel',
