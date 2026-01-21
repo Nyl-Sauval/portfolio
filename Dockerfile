@@ -29,7 +29,7 @@ COPY bootstrap ./bootstrap
 COPY app/functions.php ./app/functions.php
 COPY routes ./routes
 COPY app ./app
-RUN composer update && composer install --no-dev --no-interaction --optimize-autoloader
+RUN composer install --no-interaction --optimize-autoloader
 
 # Dépendances front
 COPY package.json package-lock.json ./
