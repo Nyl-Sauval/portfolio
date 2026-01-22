@@ -7,7 +7,7 @@
     <div>
         <div class="first-line">
             <h3>{{ $project->getTranslation('title', app()->getLocale()) }}</h3>
-            <h4 style="color: {{ $project->status == 'En cours' ? 'orange' : ($project->status == 'Terminé' ? 'green' : 'black') }};">
+            <h4 class="status-badge status-{{ $project->status == 'En cours' ? 'in-progress' : 'completed' }}">
                 {{ __($project->status) }}
             </h4>
         </div>
