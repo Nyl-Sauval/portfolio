@@ -434,10 +434,14 @@ header {
 
 /* Project Form Styles */
 .project-form {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
 }
 
 .project-form .form-group {
@@ -448,31 +452,40 @@ header {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
 }
 
 .project-form .form-control {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
     border-radius: 4px;
     font-size: 1rem;
+}
+
+.project-form .form-control:focus {
+    outline: none;
+    border-color: #00d4ff;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .project-form .btn-submit {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
     color: white;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .project-form .btn-submit:hover {
-    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
 }
 
 /* Style pour la création */
@@ -486,7 +499,7 @@ header {
 .btn-primary {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
     color: white;
     border: none;
     border-radius: 4px;
@@ -497,8 +510,8 @@ header {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
     transition: 0.3s ease;
 }
 
@@ -545,21 +558,25 @@ header {
 }
 
 .btn-edit {
-    background-color: #28a745;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
+    transition: all 0.3s ease;
 }
 
 .btn-edit:hover {
-    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
 }
 
 .btn-delete {
-    background-color: #dc3545;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     color: white;
+    transition: all 0.3s ease;
 }
 
 .btn-delete:hover {
-    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
 }
 
 .inline-form {
