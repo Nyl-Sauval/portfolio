@@ -12,7 +12,21 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', 'Montserrat', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                'dark-space': {
+                    bg: '#050505',
+                    'bg-secondary': '#0a0a0f',
+                    cyan: '#00E5FF',
+                    violet: '#8A2BE2',
+                    orange: '#D35400',
+                    green: '#10B981',
+                },
+            },
+            borderRadius: {
+                'card': '12px',
+                'card-lg': '16px',
             },
         },
     },

@@ -1,7 +1,9 @@
 <div class="project-card">
-    @if($project->images)
-        <img src="{{ asset('storage/projects/' . $project->images[0]) }}" alt="{{ $project->images[0] }}" class="project-image">
-    @endif
+    <div class="project-image-wrapper" data-initial="{{ strtoupper(substr($project->getTranslation('title', app()->getLocale()), 0, 1)) }}">
+        @if($project->images)
+            <img src="{{ asset('storage/projects/' . $project->images[0]) }}" alt="{{ $project->images[0] }}" class="project-image">
+        @endif
+    </div>
     <div>
         <div class="first-line">
             <h3>{{ $project->getTranslation('title', app()->getLocale()) }}</h3>
@@ -14,7 +16,3 @@
         <a href="{{ route('projects.show', $project->id) }}" class="btn-primary">{{ __('view_project') }}</a>
     </div>
 </div>
-
-<style>
-
-</style>
