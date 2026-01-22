@@ -572,24 +572,29 @@ header {
 /* Projects show */
 
 .project-details {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     padding: 30px;
     margin: 20px auto;
     max-width: 1100px;
+    position: relative;
+    z-index: 2;
 }
 
 .title {
     font-size: 2.5rem;
     text-align: center;
-    color: #2d3748;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .updated-at {
     text-align: center;
     font-size: 1rem;
-    color: #718096;
+    color: #a0aec0;
 }
 
 .project-body {
@@ -606,19 +611,19 @@ header {
 
 .description h3 {
     font-size: 1.25rem;
-    color: #4a5568;
+    color: #00d4ff;
     margin-top: 20px;
 }
 
 .description p {
     font-size: 1rem;
     line-height: 1.5;
-    color: #2d3748;
+    color: #ffffff;
 }
 
 .project-details-info h3 {
     font-size: 1.5rem;
-    color: #4a5568;
+    color: #00d4ff;
     margin-bottom: 20px;
 }
 
@@ -630,7 +635,21 @@ header {
 .details-list li {
     font-size: 1rem;
     margin-bottom: 10px;
-    color: #4a5568;
+    color: #a0aec0;
+}
+
+.details-list li strong {
+    color: #ffffff;
+}
+
+.details-list li a {
+    color: #00d4ff;
+    text-decoration: none;
+}
+
+.details-list li a:hover {
+    color: #00e5ff;
+    text-decoration: underline;
 }
 
 .complexity-stars svg {
@@ -641,7 +660,7 @@ header {
 
 .other-images h3 {
     font-size: 1.5rem;
-    color: #4a5568;
+    color: #00d4ff;
     margin-bottom: 20px;
 }
 
@@ -659,22 +678,25 @@ header {
 .btn-back {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
     color: white;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
     margin-top: 30px;
+    transition: all 0.3s ease;
 }
 
 .btn-back:hover {
-    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
 }
 
 /* Contact Page Styles */
 .contact {
     padding: 40px 0;
-    background-color: #f9f9f9;
+    position: relative;
+    z-index: 2;
 }
 
 .contact .container {
@@ -688,7 +710,8 @@ header {
 .contact h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .contact-methods {
@@ -698,31 +721,41 @@ header {
 }
 
 .contact-method {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
+    transition: 0.3s ease;
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .contact-method h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #007bff;
+    color: #00d4ff;
 }
 
 .contact-method p {
     font-size: 1rem;
-    color: #333;
+    color: #a0aec0;
 }
 
 .contact-method a {
-    color: #007bff;
+    color: #ffffff;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .contact-method a:hover {
-    text-decoration: underline;
+    color: #00d4ff;
 }
 
 
@@ -821,34 +854,39 @@ header {
     padding: 20px;
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    position: relative;
+    z-index: 2;
 }
 
 .experience-title {
     text-align: center;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .experience-label {
     font-weight: bold;
-    color: #000;
+    color: #ffffff;
 }
 
 .experience-value {
-    color: #555;
+    color: #a0aec0;
 }
 
 .experience-description {
-    background: #f9f9f9;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 15px;
     border-radius: 5px;
-    color: #333;
+    color: #ffffff;
 }
 
 .experience-competencies {
     list-style: disc;
     padding-left: 20px;
-    color: #555;
+    color: #a0aec0;
 }
 
 .experience-competency {
@@ -858,16 +896,18 @@ header {
 .experience-btn-back {
     display: inline-block;
     padding: 10px 20px;
-    background: #007bff;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
     margin-top: 20px;
+    transition: all 0.3s ease;
 }
 
 .experience-btn-back:hover {
-    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
 }
 
 /* download cv button */
