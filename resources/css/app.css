@@ -811,6 +811,11 @@ header {
     color: #b0b0b0;
 }
 
+.complexity-stars {
+    display: flex;
+    align-items: center;
+}
+
 .complexity-stars svg {
     width: 20px;
     height: 20px;
