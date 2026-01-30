@@ -1,8 +1,10 @@
 <x-app-layout>
 
-    <!-- Hero Section -->
-    <section class="banner">
-        <img src="{{ asset('storage/images/banner.png') }}" alt="{{ __('banner_alt') }}" class="banner-image">
+    <!-- Hero Section with Dark Space Design -->
+    <section class="hero-section">
+        <div class="hero-glow"></div>
+        <h1 class="hero-title">NYL SAUVAL</h1>
+        <p class="hero-subtitle">DÉVELOPPEUR</p>
     </section>
 
     <!-- Main Section -->
@@ -14,7 +16,7 @@
             @endphp
             <a href="{{ asset('storage/cv/' . $cvFile) }}" class="btn btn-primary" target="_blank">{{__('download_cv')}}</a>
         </div>
-        <!-- Projects Section -->
+        <!-- Experiences Section -->
         <div class="experiences">
             <h2>{{ __('my_experiences') }}</h2>
             <div class="experience_content">
@@ -26,6 +28,7 @@
             </div>
         </div>
 
+        <!-- Formations Section -->
         <div class="experiences">
             <h2>{{ __('my_education') }}</h2>
             <div class="experience_content">
@@ -35,6 +38,7 @@
             </div>
         </div>
 
+        <!-- Projects Section -->
         <div class="projects">
             <h2 class="text-center mb-4">{{ __('my_projects') }}</h2>
             <div class="project-cards">
