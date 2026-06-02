@@ -35,9 +35,14 @@
                 <div class="form-group">
                     <label for="end_date">End Date</label>
                     <input type="date" id="end_date" name="end_date" class="form-control" value="{{ $project->end_date->format('Y-m-d') }}" required>                </div>
+
                 <div class="form-group">
-                    <label for="project_link">Project Link</label>
-                    <input type="url" id="project_link" name="project_link" class="form-control" value="{{ $project->project_link }}" required>
+                    <label for="github_link">GitHub Link</label>
+                    <input type="url" id="github_link" name="github_link" class="form-control" value="{{ $project->github_link }}">
+                </div>
+                <div class="form-group">
+                    <label for="hosted_link">Hosted App Link</label>
+                    <input type="url" id="hosted_link" name="hosted_link" class="form-control" value="{{ $project->hosted_link }}">
                 </div>
                 <div class="form-group">
                     <label for="status">Status</label>

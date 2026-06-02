@@ -1311,3 +1311,62 @@ header {
     background: rgba(0, 229, 255, 0.2);
     border-color: rgba(0, 229, 255, 0.5);
 }
+
+.btn-github {
+    background: rgba(36, 41, 46, 0.8);
+    border: 1px solid #24292e;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.btn-github:hover {
+    background: #24292e;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn-hosted {
+    background: rgba(40, 167, 69, 0.2);
+    border: 1px solid #28a745;
+    color: #28a745;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.btn-hosted:hover {
+    background: #28a745;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+}
+
+.btn-gitlab {
+    background: rgba(252, 109, 38, 0.2);
+    border: 1px solid #fc6d26;
+    color: #fc6d26;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.btn-gitlab:hover {
+    background: #fc6d26;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(252, 109, 38, 0.4);
+}

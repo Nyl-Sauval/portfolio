@@ -42,8 +42,19 @@
                 <li><strong>{{ __('estimated_duration') }} :</strong> {{ $project->estimated_duration }} {{ __('hours') }}</li>
                 <li><strong>{{ __('category') }} :</strong> {{ $project->getTranslation('type', app()->getLocale()) }}</li> <!-- Traduction du type -->
                 <li><strong>{{ __('technologies_used') }} :</strong> {{ implode(', ', $project->technologies) }}</li>
-                @if($project->project_link)
-                    <li><strong>{{ __('link_to_project') }} <a href="{{$project->project_link}}" target="_blank">{{ __('project_link') }}</a></strong></li>
+                @if($project->github_link)
+                    <li>
+                        <strong>{{ __('source_code') ?? 'Code source' }} :</strong> 
+                        <a href="{{$project->github_link}}" target="_blank" class="{{ str_contains(strtolower($project->github_link), 'gitlab') ? 'btn-gitlab' : 'btn-github' }}">
+                            {{ str_contains(strtolower($project->github_link), 'gitlab') ? 'GitLab' : 'GitHub' }}
+                        </a>
+                    </li>
+                @endif
+                @if($project->hosted_link)
+                    <li>
+                        <strong>{{ __('hosted_link') }} :</strong> 
+                        <a href="{{$project->hosted_link}}" target="_blank" class="btn-hosted">{{ __('view_project') }}</a>
+                    </li>
                 @endif
             </ul>
         </div>

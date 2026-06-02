@@ -10,7 +10,7 @@ class ProjectController extends  Controller
     public function index()
     {
         return view('project', [
-            'projects' => Project::where('visibility', 1)->get(),
+            'projects' => Project::where('visibility', 1)->orderBy('start_date', 'desc')->get(),
         ]);
     }
     public function show($id)
@@ -37,6 +37,8 @@ class ProjectController extends  Controller
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'project_link' => 'nullable|url',
+            'github_link' => 'nullable|url',
+            'hosted_link' => 'nullable|url',
             'status' => 'nullable|string|max:255',
             'type' => 'nullable|string|max:255',
             'estimated_duration' => 'nullable|string|max:255',
@@ -70,7 +72,9 @@ class ProjectController extends  Controller
             'technologies.*' => 'string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
-            'project_link' => 'required|url',
+            'project_link' => 'nullable|url',
+            'github_link' => 'nullable|url',
+            'hosted_link' => 'nullable|url',
             'status' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'estimated_duration' => 'required|string|max:255',
@@ -84,6 +88,8 @@ class ProjectController extends  Controller
         $project->start_date = $request->input('start_date');
         $project->end_date = $request->input('end_date');
         $project->project_link = $request->input('project_link');
+        $project->github_link = $request->input('github_link');
+        $project->hosted_link = $request->input('hosted_link');
         $project->status = $request->input('status');
         $project->type = $request->input('type');
         $project->estimated_duration = $request->input('estimated_duration');

@@ -6,38 +6,38 @@
             <div class="skill">
                 <div class="leftPartSkills">
                     <h3>IDE</h3>
-                    <p>Idea, PyCharm, PhpStorm, Vsc, Eclipse</p>
+                    <p>Idea, PyCharm, PhpStorm, VS Code, Eclipse</p>
                 </div>
             </div>
             <div class="skill">
 
                 <div class="leftPartSkills">
                     <h3>{{__('programming_languages')}}</h3>
-                    <p>PHP, Java, Python, HTML, CSS</p>
+                    <p>PHP, Java, Python, TypeScript, JavaScript, HTML, CSS</p>
                 </div>
             </div>
             <div class="skill">
                 <div class="leftPartSkills">
-                    <h3>Frameworks</h3>
-                    <p>Laravel, JavaFX, Flask, Maven, JUnit</p>
+                    <h3>Frameworks & Librairies</h3>
+                    <p>React, Angular, Spring Boot, Laravel, Ionic, Tailwind CSS, Vite.js, Flask, JavaFX</p>
                 </div>
             </div>
             <div class="skill">
                 <div class="leftPartSkills">
                     <h3>{{__('database')}}</h3>
-                    <p>SQLite, MySQL, PostgreSQL</p>
+                    <p>MongoDB, MySQL, PostgreSQL, SQLite</p>
                 </div>
             </div>
             <div class="skill">
                 <div class="leftPartSkills">
                     <h3>{{__('tools')}}</h3>
-                    <p>Github/Gitlab, Docker</p>
+                    <p>GitHub/GitLab, Docker, Swagger, Netlify, Render, Maven</p>
                 </div>
             </div>
             <div class="skill">
                 <div class="leftPartSkills">
                     <h3>{{__('other')}}</h3>
-                    <p>Unit Testing, Agile Methodologies</p>
+                    <p>API REST, JWT, UI/UX (Framer Motion), Agile (Sprints/Scrum), Unit Testing (JUnit)</p>
                 </div>
             </div>
         </div>

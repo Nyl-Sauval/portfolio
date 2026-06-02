@@ -32,6 +32,8 @@ class ProjectSeeder extends Seeder
                 'start_date' => '2024-11-11',
                 'end_date' => '',
                 'project_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/cardle',
+                'github_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/cardle',
+                'hosted_link' => null,
                 'status' => [
                     'fr' => 'En cours',
                     'en' => 'In progress',
@@ -67,6 +69,8 @@ class ProjectSeeder extends Seeder
                 'start_date' => '2025-01-03',
                 'end_date' => '',
                 'project_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/portfolio-web',
+                'github_link' => 'https://github.com/Nyl-Sauval/portfolio',
+                'hosted_link' => 'me.innocorp.fr',
                 'status' => [
                     'fr' => 'En cours',
                     'en' => 'In progress',
@@ -112,6 +116,8 @@ class ProjectSeeder extends Seeder
                 'start_date' => '2024-12-18',
                 'end_date' => '2024-12-19',
                 'project_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/marathon-web',
+                'github_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/marathon-web',
+                'hosted_link' => null,
                 'estimated_duration' => 36,
                 'visibility' => true,
             ],
@@ -147,6 +153,8 @@ class ProjectSeeder extends Seeder
                 'start_date' => '2024-10-22',
                 'end_date' => '2024-12-17',
                 'project_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/lensjudge-web',
+                'github_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/lensjudge-web',
+                'hosted_link' => null,
                 'estimated_duration' => 60,
                 'visibility' => true,
             ],
@@ -172,6 +180,8 @@ class ProjectSeeder extends Seeder
                 'start_date' => '2024-10-01',
                 'end_date' => '',
                 'project_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/bomberman-group-c-1',
+                'github_link' => 'https://gitlab.univ-artois.fr/nyl_sauval/bomberman-group-c-1',
+                'hosted_link' => null,
                 'status' => [
                     'fr' => 'En cours',
                     'en' => 'In progress',
@@ -207,6 +217,8 @@ class ProjectSeeder extends Seeder
                 'start_date' => '2024-10-07',
                 'end_date' => '2024-11-18',
                 'project_link' => 'https://gitlab.univ-artois.fr/axel_charles/the-price-is-right-by-man',
+                'github_link' => 'https://gitlab.univ-artois.fr/axel_charles/the-price-is-right-by-man',
+                'hosted_link' => null,
                 'status' => [
                     'fr' => 'Terminé',
                     'en' => 'Completed',
@@ -242,6 +254,8 @@ class ProjectSeeder extends Seeder
                 'start_date' => '2024-04-01',
                 'end_date' => '2024-07-01',
                 'project_link' => '',
+                'github_link' => null,
+                'hosted_link' => null,
                 'status' => [
                     'fr' => 'Terminé',
                     'en' => 'Completed',
@@ -294,7 +308,9 @@ A nivel técnico, DriveOps se basa en una arquitectura de API REST con un back-e
                 'technologies' => ['Angular', 'TypeScript', 'Laravel', 'PHP', 'API REST', 'SQLite', 'HTML', 'CSS'],
                 'start_date' => '2025-09-13',
                 'end_date' => null,
-                'project_link' => null,
+                'project_link' => 'https://github.com/Nyl-Sauval/driveops-APP',
+                'github_link' => 'https://github.com/Nyl-Sauval/driveops-APP',
+                'hosted_link' => null,
                 'estimated_duration' => 200,
                 'visibility' => true,
             ],
@@ -361,8 +377,108 @@ La aplicación móvil Ionic ofrece un acceso simplificado para los clientes, lim
                 ],
                 'start_date' => '05/06/2025',
                 'end_date' => '03/07/2025',
-                'project_link' => 'https://gitlab.univ-artois.fr/but22/s4/s4-a-01/location-de-voitures',
+                'project_link' => 'https://github.com/Nyl-Sauval/driveby',
+                'github_link' => 'https://github.com/Nyl-Sauval/driveby',
+                'hosted_link' => 'https://driveby.innocorp.fr',
                 'estimated_duration' => '220',
+                'visibility' => true,
+            ],
+            [
+                'title' => [
+                    'fr' => 'Abyss Social',
+                    'en' => 'Abyss Social',
+                    'es' => 'Abyss Social'
+                ],
+                'summary' => [
+                    'fr' => 'Plateforme sociale innovante sur le thème de la plongée sous-marine avec génération d\'images par IA.',
+                    'en' => 'Innovative social platform themed around scuba diving with AI image generation.',
+                    'es' => 'Plataforma social innovadora centrada en el buceo con generación de imágenes por IA.'
+                ],
+                'description' => [
+                    'fr' => '🌊 Abyss : Le Réseau Social des Profondeurs
+Pitch : Abyss est une plateforme sociale innovante sur le thème de la plongée sous-marine et de l\'exploration des abysses. Elle permet aux explorateurs de partager leurs "plongées" (posts), de générer des images sous-marines par Intelligence Artificielle, et d\'interagir avec une communauté passionnée.
+
+🔄 Un contexte de projet unique et stimulant
+Ce projet s\'inscrit dans un cadre de développement particulièrement original : un échange croisé de back-ends entre équipes. En tant qu\'équipe de 5 développeurs, nous avons reçu le code back-end (et la vision produit) d\'une autre équipe. Notre mission était de nous approprier leur base de code, de comprendre leur architecture, et de développer l\'intégralité du front-end pour donner vie à leur réseau social. En parallèle, une troisième équipe était chargée de développer un front-end basé sur notre propre back-end. Cet exercice a exigé une excellente communication, une lecture de code rigoureuse et une grande flexibilité.
+
+🏃‍♂️ Méthodologie : Agilité extrême
+Pour répondre à ce défi dans un temps très court, nous avons adopté une méthodologie Agile poussée à son maximum :
+- Sprints d\'une demi-journée : Des cycles de développement ultra-courts permettant des réajustements permanents.
+- Gestion visuelle (Post-it) : Suivi des tâches sur un mur de post-its pour une transparence totale de l\'avancement au sein de l\'équipe.
+- User Stories : Implémentation pilotée par la valeur utilisateur (ex: "En tant qu\'explorateur, je veux pouvoir générer une image du fond marin par IA pour illustrer ma plongée").
+
+✨ Fonctionnalités clés développées
+- Système d\'authentification complet : Inscription, connexion, et gestion sécurisée par token JWT (incluant la gestion des utilisateurs bannis).
+- Le fil de Plongées (Feed) : Création de posts avec upload d\'images ou génération d\'images assistée par IA (Stable Diffusion).
+- Interactions sociales : Système de likes/dislikes (réactions), système de commentaires, et possibilité de "suivre" d\'autres explorateurs.
+- Moteur de recherche et profils : Recherche d\'utilisateurs ou de publications, et pages de profils dynamiques.',
+                    'en' => '🌊 Abyss: The Deep-Sea Social Network
+Pitch: Abyss is an innovative social platform themed around scuba diving and deep-sea exploration. It allows explorers to share their "dives" (posts), generate underwater images using Artificial Intelligence, and interact with a passionate community.
+
+🔄 A Unique and Stimulating Project Context
+This project was part of a highly original development framework: a cross-team back-end swap. As a team of 5 developers, we received the back-end code (and product vision) from another team. Our mission was to take ownership of their codebase, understand their architecture, and develop the entire front-end to bring their social network to life. Simultaneously, a third team was tasked with developing a front-end based on our own back-end. This exercise required excellent communication, rigorous code reading, and great flexibility.
+
+🏃‍♂️ Methodology: Extreme Agile
+To meet this challenge in a very short timeframe, we adopted Agile methodology pushed to its limits:
+- Half-day sprints: Ultra-short development cycles allowing for constant readjustments.
+- Visual management (Post-its): Tracking tasks on a post-it wall for total transparency of progress within the team.
+- User Stories: Value-driven implementation (e.g., "As an explorer, I want to be able to generate an AI image of the seabed to illustrate my dive").
+
+✨ Key Features Developed
+- Complete authentication system: Registration, login, and secure management via JWT token (including banned user management).
+- Dive Feed: Creating posts with image uploads or AI-assisted image generation (Stable Diffusion).
+- Social interactions: Likes/dislikes system (reactions), commenting system, and the ability to "follow" other explorers.
+- Search engine and profiles: Search for users or publications, and dynamic profile pages.',
+                    'es' => '🌊 Abyss: La Red Social de las Profundidades
+Pitch: Abyss es una plataforma social innovadora centrada en el buceo y la exploración de las profundidades marinas. Permite a los exploradores compartir sus "inmersiones" (publicaciones), generar imágenes submarinas con Inteligencia Artificial e interactuar con una comunidad apasionada.
+
+🔄 Un Contexto de Proyecto Único y Estimulante
+Este proyecto se enmarcó en un entorno de desarrollo muy original: un intercambio cruzado de back-ends entre equipos. Como equipo de 5 desarrolladores, recibimos el código back-end (y la visión del producto) de otro equipo. Nuestra misión era apropiarnos de su base de código, comprender su arquitectura y desarrollar todo el front-end para dar vida a su red social. Al mismo tiempo, un tercer equipo se encargó de desarrollar un front-end basado en nuestro propio back-end. Este ejercicio requirió una excelente comunicación, una lectura rigurosa del código y una gran flexibilidad.
+
+🏃‍♂️ Metodología: Agilidad Extrema
+Para afrontar este reto en muy poco tiempo, adoptamos una metodología ágil llevada al máximo:
+- Sprints de medio día: Ciclos de desarrollo ultracortos que permitieron reajustes constantes.
+- Gestión visual (Post-its): Seguimiento de tareas en un muro de post-its para una transparencia total del progreso del equipo.
+- Historias de usuario: Implementación impulsada por el valor para el usuario (por ejemplo, "Como explorador, quiero poder generar una imagen del fondo marino mediante IA para ilustrar mi inmersión").
+
+✨ Características Clave Desarrolladas
+- Sistema de autenticación completo: Registro, inicio de sesión y gestión segura mediante token JWT (incluida la gestión de usuarios baneados).
+- Feed de Inmersiones: Creación de publicaciones con carga de imágenes o generación de imágenes asistida por IA (Stable Diffusion).
+- Interacciones sociales: Sistema de me gusta/no me gusta (reacciones), sistema de comentarios y capacidad para "seguir" a otros exploradores.
+- Motor de búsqueda y perfiles: Búsqueda de usuarios o publicaciones y páginas de perfil dinámicas.'
+                ],
+                'type' => [
+                    'fr' => 'Scolaire',
+                    'en' => 'Academic',
+                    'es' => 'Académico'
+                ],
+                'status' => [
+                    'fr' => 'Terminé',
+                    'en' => 'Completed',
+                    'es' => 'Finalizado'
+                ],
+                'images' => ['abyss03.png', 'abyss01.png', 'abyss02.png', 'abyss04.png', 'abyss05.png', 'abyss06.png'],
+                'complexity' => 5,
+                'technologies' => [
+                    'React 19',
+                    'TypeScript',
+                    'Vite.js',
+                    'Tailwind CSS',
+                    'Framer Motion',
+                    'Lucide React',
+                    'Java',
+                    'Spring Boot',
+                    'MongoDB',
+                    'Swagger',
+                    'Netlify',
+                    'Render'
+                ],
+                'start_date' => '2026-03-30',
+                'end_date' => '2026-05-01',
+                'project_link' => 'https://github.com/Nyl-Sauval/Abyss-Social',
+                'github_link' => 'https://github.com/Nyl-Sauval/Abyss-Social',
+                'hosted_link' => 'https://abyss-social.innocorp.fr/',
+                'estimated_duration' => '350',
                 'visibility' => true,
             ]
         ]);

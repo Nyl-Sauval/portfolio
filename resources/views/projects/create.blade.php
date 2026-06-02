@@ -38,9 +38,14 @@
                     <label for="end_date">End Date</label>
                     <input type="date" id="end_date" name="end_date" class="form-control">
                 </div>
+
                 <div class="form-group">
-                    <label for="project_link">Project Link</label>
-                    <input type="url" id="project_link" name="project_link" class="form-control">
+                    <label for="github_link">GitHub Link</label>
+                    <input type="url" id="github_link" name="github_link" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="hosted_link">Hosted App Link</label>
+                    <input type="url" id="hosted_link" name="hosted_link" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="status">Status</label>

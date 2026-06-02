@@ -26,6 +26,8 @@ class Project extends Model
         'start_date',
         'end_date',
         'project_link',
+        'github_link',
+        'hosted_link',
         'status',
         'type',
         'estimated_duration',
